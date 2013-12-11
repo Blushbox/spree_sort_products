@@ -4,9 +4,9 @@ module Spree
       before_filter :load_taxon, :only => [:sort_products, :update_products]
 
       def sort_products
-        p "starting sort products!"
+        Rails.logger.info "starting sort products!"
         @products = @taxon.products
-        p "set products! #{@products}"
+        Rails.logger.info "set products! #{@products}"
       end
 
       def update_products
@@ -20,10 +20,10 @@ module Spree
       end
 
       def load_taxon
-        p "starting load taxon!"
+        Rails.logger.info "starting load taxon!"
         @taxonomy = Taxonomy.find(params[:taxonomy_id])        
         @taxon = Taxon.find(params[:id])
-        p "got taxonomy: #{@taxonomy} and taxon: #{@taxon}"
+        Rails.logger.info "got taxonomy: #{@taxonomy} and taxon: #{@taxon}"
       end
     end
   end
