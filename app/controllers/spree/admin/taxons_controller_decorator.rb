@@ -2,9 +2,7 @@ Spree::Admin::TaxonsController.class_eval do
   before_filter :load_taxon, :only => [:sort_products, :update_products]
 
   def sort_products
-    Rails.logger.info "starting sort products!"
     @products = @taxon.products
-    Rails.logger.info "set products! #{@products}"
   end
 
   def update_products
@@ -18,11 +16,9 @@ Spree::Admin::TaxonsController.class_eval do
   end
 
   def load_taxon
-    Rails.logger.info "starting load taxon!"
     @taxonomy = Spree::Taxonomy.find(params[:taxonomy_id])        
     @taxon = Spree::Taxon.find(params[:id])
-    Rails.logger.info "got taxonomy: #{@taxonomy} and taxon: #{@taxon}"
   end
-  
+
 end
   
